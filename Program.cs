@@ -1,11 +1,22 @@
 ﻿using System.Reflection;
 
+//VARIABLES---------------------------------------------------------------------------------------------------------------------
 var assembly = Assembly.GetExecutingAssembly();
 var version = assembly.GetName().Version;
 
+int cantidadProductos = 0;
+decimal valorTotal = 0.00m;
+///string nombreSistema = "Sistema de Gestión de Inventario";
+//decimal precio = 0.00m;
+bool continuar = true;
+
+
+//INICIALIZACIÓN-----------------------------------------------------------------------------------------------------------------
 MostrarBanner();
 
-if (args.Length > 0)
+
+// FUNCIONES PRINCIPALES----------------------------------------------------------------------------------------------------------
+/*if (args.Length > 0)
 {
     var command = args[0].ToLower();
 
@@ -29,18 +40,20 @@ if (args.Length > 0)
             Environment.Exit(2);
             break;
     }
+}*/
+
+while (continuar)
+{
+    MostrarMenu();
+    string comando = LeerEntrada("Ingrese un comando: ");
+    Console.WriteLine($"Comando ingresado: {comando}");
+    continuar = ProcesarComando(comando);
 }
 
-int cantidadProductos = 0;
-decimal valorTotal = 0.00m;
-bool sistemaActivo = true;
-string nombreSistema = "Sistema de Gestión de Inventario";
-decimal precio = 0.00m;
-
-Console.WriteLine($"Bienvenido al {nombreSistema}!");
+/*Console.WriteLine($"Bienvenido al {nombreSistema}!");
 Console.WriteLine($"Productos registrados: {cantidadProductos}");
 Console.WriteLine($"Valor total del inventario: {valorTotal:N2}");
-Console.WriteLine($"Sistema activo: {(sistemaActivo ? "Sí" : "No")}");
+Console.WriteLine($"Sistema activo: {(continuar ? "Sí" : "No")}");
 
 Console.WriteLine("Ingrese una cantidad: ");
 string? entradaCantidad = Console.ReadLine();
@@ -69,12 +82,8 @@ if (decimal.TryParse(entradaPrecio, out decimal precioIngresado))
 else
 {
     Console.WriteLine("Entrada no válida para precio.");
-}
+}/*
 
-
-
-
-/*
 string? nombre = null;
 int longitud = nombre.Length;
 Console.WriteLine($"La longitud del nombre es: {longitud}");
@@ -91,34 +100,6 @@ Console.WriteLine($"Longitud: {longitud ?? 0}");
 Console.WriteLine($"Comando: {comandoLimpio}");
 */
 
-// Loop de nullabilidad
-Console.WriteLine("Comandos: listar, agregar, buscar, salir");
-Console.WriteLine();
-
-while (sistemaActivo)
-{
-    Console.Write("inventario: ");
-    string? entrada = Console.ReadLine();
-
-    string comando = string.IsNullOrWhiteSpace(entrada) ? "salir" : entrada.Trim().ToLower();
-    switch (comando)
-    {
-        case "salir":
-            Console.WriteLine("Saliendo del programa...");
-            sistemaActivo = false;
-            break;
-        case "listar":
-            Console.WriteLine($"Lista de productos: {cantidadProductos}");
-            break;
-        case "":
-            break;
-        default:
-            Console.WriteLine($"Error: comando desconocido '{comando}'");
-            Console.WriteLine("Comandos disponibles: listar, agregar, buscar, salir");
-            break;
-    }
-}
-
 /*
 Console.Write("Ingrese un comando o ingrese salir para terminar: ");
 string? entrada = Console.ReadLine();
@@ -129,8 +110,54 @@ if (string.IsNullOrWhiteSpace(entrada) || entrada.ToLower() == "salir")
     Environment.Exit(0);
 }*/
 
-//FUNCIONES---------------------------------------------------------------------------------------------------------------------------------------
-void MostrarAyuda()
+//METODOS----------------------------------------------------------------------------------------------------------------
+bool ProcesarComando(string comando)
+{
+    switch (comando)
+    {
+        case "listar":
+            ListarProductos();
+            return true;
+
+        case "agregar":
+            
+            AgregarProducto();
+            return true;
+
+        case "buscar":
+            BuscarProducto();
+            return true;
+
+        case "salir":
+            Console.WriteLine("Saliendo del programa...");
+            return false;
+
+        default:
+            Console.WriteLine($"Comando desconocido: {comando}");
+            Console.WriteLine("Comandos disponibles: listar, agregar, buscar, salir");
+            return true;
+    }
+}
+
+string LeerEntrada(string prompt)
+{
+    Console.Write(prompt);
+    string? entrada = Console.ReadLine();
+    string comando = string.IsNullOrWhiteSpace(entrada) ? "salir" : entrada.Trim().ToLower();
+
+    return comando switch
+    {
+        "1" => "listar",
+        "2" => "agregar",
+        "3" => "buscar",
+        "4" => "salir",
+        _ => comando
+    };
+}
+
+
+//FUNCIONES DE INTERFAZ--------------------------------------------------------------------------------------------------
+/*void MostrarAyuda()
 {
     Console.WriteLine("USO: InventarioApp [comando] [opciones]");
     Console.WriteLine();
@@ -141,7 +168,7 @@ void MostrarAyuda()
     Console.WriteLine("EJEMPLOS:");
     Console.WriteLine(" dotnet run -- --help");
     Console.WriteLine(" dotnet run -- --version");
-}
+}*/
 
 void MostrarBanner()
 {
@@ -153,6 +180,34 @@ void MostrarBanner()
     Console.WriteLine($".NET: {Environment.Version}");
     Console.WriteLine($"Sistema: {Environment.OSVersion.Platform}");
     Console.WriteLine();
+}
+
+void MostrarMenu()
+{
+    Console.WriteLine("MENU PRINCIPAL");
+    Console.WriteLine("1. Listar productos");
+    Console.WriteLine("2. Agregar producto");
+    Console.WriteLine("3. Buscar producto");
+    Console.WriteLine("4. Salir");
+}
+
+void ListarProductos()
+{
+    Console.WriteLine("LISTA DE PRODUCTOS");
+    Console.WriteLine($"Total productos: {cantidadProductos}");
+    Console.WriteLine($"Valor total: {valorTotal:N2}");
+}
+
+void AgregarProducto()
+{
+    Console.WriteLine("AGREGAR PRODUCTO");
+    Console.WriteLine("Funcionalidad en desarrollo...");
+}
+
+void BuscarProducto()
+{
+    Console.WriteLine("BUSCAR PRODUCTO");
+    Console.WriteLine("Funcionalidad en desarrollo...");
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------
