@@ -9,6 +9,8 @@ public enum CategoriaProducto
     Deportes,
     Salud,
     Belleza,
+    Muebles,
+    Juguetes,
     Libros,
     Otros
 }
