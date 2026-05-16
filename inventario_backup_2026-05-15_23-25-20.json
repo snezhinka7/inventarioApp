@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "nombre": "Laptop",
+    "precio": 999.99,
+    "cantidad": 10,
+    "categoria": "Electronica",
+    "estado": "Activo",
+    "fechaRegistro": "2026-05-15T23:21:44.772582-03:00",
+    "valorTotal": 9999.90
+  },
+  {
+    "id": 2,
+    "nombre": "Camiseta",
+    "precio": 19.99,
+    "cantidad": 50,
+    "categoria": "Ropa",
+    "estado": "Activo",
+    "fechaRegistro": "2026-05-15T23:21:44.777328-03:00",
+    "valorTotal": 999.50
+  },
+  {
+    "id": 3,
+    "nombre": "Silla de Oficina",
+    "precio": 149.99,
+    "cantidad": 5,
+    "categoria": "Muebles",
+    "estado": "Inactivo",
+    "fechaRegistro": "2026-05-15T23:21:44.7773296-03:00",
+    "valorTotal": 749.95
+  }
+]
