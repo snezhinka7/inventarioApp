@@ -6,7 +6,7 @@
     "cantidad": 10,
     "categoria": "Electronica",
     "estado": "Activo",
-    "fechaRegistro": "2026-05-15T23:25:20.5021132-03:00",
+    "fechaRegistro": "2026-05-15T23:27:11.6753485-03:00",
     "valorTotal": 9999.90
   },
   {
@@ -16,7 +16,7 @@
     "cantidad": 50,
     "categoria": "Ropa",
     "estado": "Activo",
-    "fechaRegistro": "2026-05-15T23:25:20.5070842-03:00",
+    "fechaRegistro": "2026-05-15T23:27:11.6799713-03:00",
     "valorTotal": 999.50
   },
   {
@@ -26,7 +26,17 @@
     "cantidad": 5,
     "categoria": "Muebles",
     "estado": "Inactivo",
-    "fechaRegistro": "2026-05-15T23:25:20.5070861-03:00",
+    "fechaRegistro": "2026-05-15T23:27:11.6799729-03:00",
     "valorTotal": 749.95
+  },
+  {
+    "id": 4,
+    "nombre": "mac",
+    "precio": 25,
+    "cantidad": 3,
+    "categoria": "Electronica",
+    "estado": "Activo",
+    "fechaRegistro": "2026-05-16T22:01:12.6328726-03:00",
+    "valorTotal": 75
   }
 ]

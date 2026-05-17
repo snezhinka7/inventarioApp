@@ -26,6 +26,11 @@ public class JsonInventarioStorage
         return JsonSerializer.Deserialize<List<Producto>>(json, _options) ?? new List<Producto>();
     }
 
+    public bool Existe(string ruta)
+    {
+        return _fileManager.Existe(ruta);
+    }
+
     public string CrearBackup(string ruta)
     {
         if (!_fileManager.Existe(ruta))

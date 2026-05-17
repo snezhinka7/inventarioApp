@@ -6,6 +6,11 @@ public static class ProductoFactory
     public static int _nextId = 1;
     public static Producto CrearProducto(string nombre, decimal precio, int cantidad, CategoriaProducto categoria = CategoriaProducto.Otros)
     {
+        return CrearProducto(nombre, precio, cantidad, categoria, EstadoProducto.Activo);
+    }
+
+    public static Producto CrearProducto(string nombre, decimal precio, int cantidad, CategoriaProducto categoria, EstadoProducto estado)
+    {
         //Validaciones tempranas o fail fast - Guard Clauses
         if (string.IsNullOrWhiteSpace(nombre))
             throw new ArgumentException("El nombre del producto no puede estar vacío.", nameof(nombre));
@@ -22,7 +27,7 @@ public static class ProductoFactory
             Cantidad = cantidad,
             Categoria = categoria,
             FechaRegistro = DateTime.Now,
-            Estado = EstadoProducto.Activo
+            Estado = estado
         };
     }
 
